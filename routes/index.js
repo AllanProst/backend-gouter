@@ -1,12 +1,12 @@
-import notebook from '../controllers/foodController';
+import foodbook from '../controllers/foodController';
 
 export default (app) => {
     app.route('/food')
-        .get(notebook.getAllFoods)
-        .post(notebook.createFood);
+        .get(foodbook.getAllFoods)
+        .post(foodbook.createFood);
 
     app.route('/food/:foodId')
-        .get(notebook.getFood)
-        .put(notebook.updateFood)
-        .delete(notebook.deleteFood);
+        .get(foodbook.getFood)
+        .put(foodbook.updateFood)
+        .delete(foodbook.deleteFood);
 };

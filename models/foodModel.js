@@ -3,29 +3,34 @@ import mongoose, {
 } from 'mongoose';
 
 /**
- * Create database scheme for notes
+ * Create database scheme for foods
  */
-const NoteScheme = new Schema({
+
+const FoodScheme = new Schema({
     title: {
         type: String,
-        required: "Gouter lundi"
+        required: "Gouter"
     },
-    text: {
+    reason: {
         type: String,
-        required: "Type de gouter"
+        required: "Hacked/Nouvel arrivant"
     },
-    DueDate: {
-        type: String,
+    dueDate: {
+        type: Date,
         required: "10.12.2012"
     },
-    date: {
+    timeStamp: {
         type: Date,
         default: new Date
     },
     email: {
         type: String,
-        default: "emailAdress"
+        required: "Email"
+    },
+    name: {
+        type: String,
+        required: "NickName"
     }
 });
 
-export default mongoose.model('Note', NoteScheme);
+export default mongoose.model('Food', FoodScheme);

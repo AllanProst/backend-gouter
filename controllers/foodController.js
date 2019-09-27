@@ -1,53 +1,53 @@
 import mongoose from 'mongoose'; 
-import note from '../models/foodModel.js';
+import food from '../models/foodModel.js';
 
 exports.getFood = (req, res) => {
-    note.findById(req.params.foodId, (err, note) => {
+    food.findById(req.params.foodId, (err, food) => {
         if (err) {
             res.send(err);
         }
 
-        res.json(note);
+        res.json(food);
     });
 };
 
 exports.getAllFoods = (req, res) => {
-    note.find({}, (err, notes) => {
+    food.find({}, (err, foods) => {
         if (err) {
             res.send(err);
         }
 
-        res.json(notes);
+        res.json(foods);
     });
 };
 
 exports.createFood = (req, res) => {
-    const newNote = new note(req.body);
+    const newfood = new food(req.body);
 
-    newNote.save((err, note) => {
+    newfood.save((err, food) => {
         if (err) {
             res.send(err);
         }
 
-        res.json(note);
+        res.json(food);
     });
 };
 
 exports.updateFood = (req, res) => {
-    note.findOneAndUpdate({
+    food.findOneAndUpdate({
         _id: req.params.foodId
     }, req.body,
-        (err, note) => {
+        (err, food) => {
             if (err) {
                 res.send(err);
             }
 
-            res.json(note);
+            res.json(food);
         });
 };
 
 exports.deleteFood = (req, res) => {
-    note.remove({
+    food.remove({
         _id: req.params.foodId
     }, (err) => {
         if (err) {
@@ -55,7 +55,7 @@ exports.deleteFood = (req, res) => {
         }
 
         res.json({
-            message: `note ${req.params.foodId} successfully deleted`
+            message: `food ${req.params.foodId} successfully deleted`
         });
     });
 };
